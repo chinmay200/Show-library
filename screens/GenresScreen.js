@@ -10,12 +10,11 @@ function GenresScreen() {
   }
 
   return (
-    <View style = {styles.container}>
+    <View>
       <FlatList
         data={genres}
         renderItem={genreTile}
         keyExtractor={(item) => item.id}
-        numColumns={2}
       />
     </View>
   );
@@ -23,5 +22,3 @@ function GenresScreen() {
 
 export default GenresScreen;
 
-const styles = StyleSheet.create({
-})

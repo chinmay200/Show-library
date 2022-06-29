@@ -22,24 +22,32 @@ export default function ShowTile({ item }) {
   if (item.vote_average < 4) {
     ratingColor = "#eb6123";
   } else if (item.vote_average < 7) {
-    ratingColor = "#F5F500";
+    ratingColor = "#F5BC00";
   }
-
 
   const navigation = useNavigation();
 
-  function onPressHandler(showId){
-    navigation.navigate("ShowsDetailScreen" , {showId : showId})
+  function onPressHandler(showId) {
+    navigation.navigate("ShowsDetailScreen", { showId: showId });
   }
 
   return (
     <LinearGradient
       style={styles.showTileContainer}
-      colors={["white","white" ,GlobalStyles.colors.backgroundDark]}
-      start={{ x: 0.3, y: 0.3 }}
+      colors={[
+        "transparent",
+        GlobalStyles.colors.backgroundDark,
+        GlobalStyles.colors.backgroundDark,
+
+      ]}
+      start={{ x: 0.1, y: 0.3 }}
       end={{ x: 1, y: 1 }}
     >
-      <Pressable android_ripple={{ color: "grey" }} style={styles.button} onPress = {onPressHandler.bind(this , item.id)}>
+      <Pressable
+        android_ripple={{ color: "grey" }}
+        style={styles.button}
+        onPress={onPressHandler.bind(this, item.id)}
+      >
         <ImageBackground
           source={posterImg}
           resizeMode="cover"
@@ -78,13 +86,13 @@ export default function ShowTile({ item }) {
                 <Text style={styles.deatil}>Adult</Text>
               </View>
             )}
-            <View style = {styles.releaseDetails}> 
+            <View style={styles.releaseDetails}>
               <MaterialCommunityIcons
                 name="movie-open"
                 size={24}
                 color="#ffff00"
               />
-              <Text  style = {styles.releaseText}>{item.release_date}</Text>
+              <Text style={styles.releaseText}>{item.release_date}</Text>
             </View>
           </View>
         </ImageBackground>
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
 
   showTitle: {
     fontSize: 20,
-    color: "#000000",
+    color: GlobalStyles.colors.litext,
     fontWeight: "600",
   },
 
@@ -144,16 +152,17 @@ const styles = StyleSheet.create({
     color: "white",
   },
 
-  releaseDetails:{
-    marginTop:10,
-    flexDirection:"row",
-    justifyContent:"space-between",
-    alignItems:"center",
-    width:100
+  releaseDetails: {
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: 100,
   },
 
-  releaseText:{
-    fontSize:15,
-    fontWeight:"bold"
-  }
+  releaseText: {
+    fontSize: 15,
+    color: "#ffff",
+    fontWeight: "bold",
+  },
 });
